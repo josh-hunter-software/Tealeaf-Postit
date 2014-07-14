@@ -1,13 +1,4 @@
-<% if @post.errors.any? %>
-  <div class='alert alert-error'>
-  <h5>An error occured: </h5>
-  <ul> 
-    <% @post.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-    <% end %>
-  </ul>
-  </div>
-<% end %>
+<%= render 'shared/errors', obj: @post %>
 
 <div class='well'> 
  <%= form_for @post do |f| %>
@@ -24,6 +15,6 @@
       <%= f.text_area :description, rows: 5 %>
     </div>
     
-    <%= f.submit "Create Post", class: 'btn btn-primary' %>
+    <%= f.submit(@post.new_record? ? 'Create Post' : 'Update Post', class: 'btn btn-primary')%>
   <% end %>
 </div>

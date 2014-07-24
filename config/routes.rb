@@ -20,7 +20,7 @@ post '/pin', to: 'sessions#pin'
     end
   end
   resources :categories, only: [:new, :create, :show]
-  resources :users, except: [:new, :destroy, :index]
+  resources :users, except: [:new, :destroy]
 
 
 end
